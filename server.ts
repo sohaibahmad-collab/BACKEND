@@ -15,7 +15,7 @@ app.use("/api", routes);
 
 app.use(errorMiddleware);
 
-const PORT = settings.port || 1000;
+const PORT = settings.port;
 
 connectDB();
 
