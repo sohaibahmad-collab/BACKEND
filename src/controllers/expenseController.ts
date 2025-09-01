@@ -1,50 +1,54 @@
-import { type Request, type Response } from "express";
+import { NextFunction, type Request, type Response } from "express";
 import Expense from "@src/models/expenseModel.ts";
+import ApiError from "@src/utils/ApiError.ts";
 
 export const getExpenses = async (
   req: Request,
-  res: Response
+  res: Response,
+  next:NextFunction
 ): Promise<void> => {
   try {
     const expenses = await Expense.find({});
     res.status(200).json(expenses);
   } catch (error: any) {
-    res.status(500).json({ message: error.message });
+    next(error)
   }
 };
 
 export const createExpense = async (
   req: Request,
-  res: Response
+  res: Response,
+  next:NextFunction
 ): Promise<void> => {
   try {
     const { name, amount } = req.body;
     const expense = await Expense.create({ name, amount });
     res.status(201).json(expense);
-  } catch (error: any) {
-    res.status(400).json({ message: error.message });
+  } catch (error) {
+   next(error)
   }
 };
 
 export const getExpenseById = async (
   req: Request,
-  res: Response
+  res: Response,
+  next:NextFunction
 ): Promise<void> => {
   try {
     const expense = await Expense.findById(req.params.id);
     if (!expense) {
-      res.status(404).json({ message: "Expense not found" });
-      return;
+      return next(new ApiError(404, "Expense not found"));
     }
     res.status(200).json(expense);
   } catch (error: any) {
-    res.status(500).json({ message: error.message });
+    next(error)
   }
 };
 
 export const updateExpense = async (
   req: Request,
-  res: Response
+  res: Response,
+  next:NextFunction
 ): Promise<void> => {
   try {
     const expense = await Expense.findByIdAndUpdate(req.params.id, req.body, {
@@ -52,27 +56,26 @@ export const updateExpense = async (
       runValidators: true,
     });
     if (!expense) {
-      res.status(404).json({ message: "Expense not found" });
-      return;
+        return next(new ApiError(404, "Expense not found"));
     }
     res.status(200).json(expense);
   } catch (error: any) {
-    res.status(400).json({ message: error.message });
+    error(next)
   }
 };
 
 export const deleteExpense = async (
   req: Request,
-  res: Response
+  res: Response,
+  next:NextFunction
 ): Promise<void> => {
   try {
     const expense = await Expense.findByIdAndDelete(req.params.id);
     if (!expense) {
-      res.status(404).json({ message: "Expense not found" });
-      return;
+      return next(new ApiError(404, "Expense not found"));
     }
     res.status(200).json({ message: "Expense deleted successfully" });
   } catch (error: any) {
-    res.status(500).json({ message: error.message });
+    next(error)
   }
 };

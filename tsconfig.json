@@ -1,28 +1,7 @@
-
-// {
-//   "compilerOptions": {
-//     "module": "ESNext",
-//     "moduleResolution": "node",
-//     "target": "ESNext",
-//     "allowImportingTsExtensions": true,
-//     "noEmit": true,
-//     "strict": true,
-//     "esModuleInterop": true,
-//     "forceConsistentCasingInFileNames": true,
-//     "skipLibCheck": true,
-//     "baseUrl": ".",
-//     "paths": {
-//       "@src/*": ["src/*"]
-//     }
-//   },
-//   "include": ["src"],
-//   "exclude": ["node_modules"]
-// }
-
 {
   "compilerOptions": {
-    "module": "commonjs",                      // Must match moduleResolution for Node ESM
-    "moduleResolution": "Node",           // Node.js ESM resolution
+    "module": "commonjs",
+    "moduleResolution": "Node",
     "target": "ESNext",
     "allowImportingTsExtensions": true,
     "noEmit": true,
@@ -30,12 +9,12 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "baseUrl": "./",                            // Base for absolute imports
+    "baseUrl": "./",
     "paths": {
-      "@root/*": ["*"],      
-     "@src/*": ["src/*"]                   // All absolute imports start with src
+      "@root/*": ["*"],
+      "@src/*": ["src/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "server.ts"],
   "exclude": ["node_modules"]
 }
