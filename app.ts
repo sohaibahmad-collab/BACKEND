@@ -1,6 +1,6 @@
 import express, { type Application } from "express";
 import dotenv from "dotenv";
-import expenseRoutes from "./src/routes/expenseRoutes.ts";
+import expenseRoutes from "@src/routes/expenseRoutes.ts";
 
 dotenv.config();
 

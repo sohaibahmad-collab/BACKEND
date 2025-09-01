@@ -5,7 +5,7 @@ import {
   getExpenseById,
   updateExpense,
   deleteExpense,
-} from "../controllers/expenseController.ts";
+} from "@src/controllers/expenseController";
 
 const router: Router = Router();
 

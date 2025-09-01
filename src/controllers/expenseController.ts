@@ -1,5 +1,5 @@
 import { type Request, type Response } from "express";
-import Expense from "../models/expenseModel.ts";
+import Expense from "@src/models/expenseModel.ts";
 
 export const getExpenses = async (
   req: Request,

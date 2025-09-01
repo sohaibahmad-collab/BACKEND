@@ -21,8 +21,8 @@
 
 {
   "compilerOptions": {
-    "module": "NodeNext",                      // Must match moduleResolution for Node ESM
-    "moduleResolution": "NodeNext",           // Node.js ESM resolution
+    "module": "commonjs",                      // Must match moduleResolution for Node ESM
+    "moduleResolution": "Node",           // Node.js ESM resolution
     "target": "ESNext",
     "allowImportingTsExtensions": true,
     "noEmit": true,
@@ -30,9 +30,10 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "baseUrl": ".",                            // Base for absolute imports
+    "baseUrl": "./",                            // Base for absolute imports
     "paths": {
-     "@src": ["src/*"]                   // All absolute imports start with src
+      "@root/*": ["*"],      
+     "@src/*": ["src/*"]                   // All absolute imports start with src
     }
   },
   "include": ["src"],
