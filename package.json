@@ -1,5 +1,4 @@
 {
-  
   "name": "backend",
   "version": "1.0.0",
   "description": "",
@@ -8,20 +7,23 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "dev": "nodemon --exec ts-node --swc -r tsconfig-paths/register src/server.ts",
-    "start": "ts-node --swc -r tsconfig-paths/register src/server.ts"
+    "dev": "nodemon --exec ts-node --swc -r tsconfig-paths/register server.ts",
+    "start": "ts-node --swc -r tsconfig-paths/register server.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
-    "mongoose": "^8.18.0"
+    "mongoose": "^8.18.0",
+    "zod": "^4.1.5"
   },
   "devDependencies": {
     "@swc/core": "^1.13.5",
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.3.0",
     "nodemon": "^3.1.10",
