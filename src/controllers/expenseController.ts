@@ -12,7 +12,7 @@ export const getExpenses = async (
   try {
     const expenses = await Expense.find({});
     res.status(HttpStatusCode.OK).json(expenses);
-  } catch (error: Error) {
+  } catch (error) {
     next(error);
   }
 };
@@ -26,7 +26,7 @@ export const createExpense = async (
     const { name, amount } = req.body;
     const expense = await Expense.create({ name, amount });
     res.status(HttpStatusCode.CREATED).json(expense);
-  } catch (error: Error) {
+  } catch (error) {
     next(error);
   }
 };
@@ -44,7 +44,7 @@ export const getExpenseById = async (
       );
     }
     res.status(HttpStatusCode.OK).json(expense);
-  } catch (error: Error) {
+  } catch (error) {
     next(error);
   }
 };
@@ -65,7 +65,7 @@ export const updateExpense = async (
       );
     }
     res.status(HttpStatusCode.CREATED).json(expense);
-  } catch (error: Error) {
+  } catch (error) {
     next(error);
   }
 };
@@ -85,7 +85,7 @@ export const deleteExpense = async (
     res
       .status(HttpStatusCode.OK)
       .json({ message: HttpMessage.DELETED });
-  } catch (error: Error) {
+  } catch (error) {
     next(error);
   }
 };

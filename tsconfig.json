@@ -4,6 +4,7 @@
     "moduleResolution": "Node",
     "target": "ESNext",
     "allowImportingTsExtensions": true,
+    "useUnknownInCatchVariables": false,
     "noEmit": true,
     "strict": true,
     "esModuleInterop": true,
